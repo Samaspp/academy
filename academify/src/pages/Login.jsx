@@ -1,4 +1,5 @@
 import React from 'react'
+import '../styles/login.css'
 
 function Login() {
     function handleRegistration(){
@@ -6,16 +7,17 @@ function Login() {
     }
   return (
     <div className='login'>
-        <h2>Signup/Login</h2>
+        
         <div className='container'>
+        <h2>Register</h2>
             <form>
-                <input 
-                type='text'
-                placeholder='Email'
+                <input className='email'
+                    type='text'
+                    placeholder='Email'
                 ></input>
-                <input
-                type='password'
-                placeholder='Password'
+                <input className='password'
+                    type='password'
+                    placeholder='Password'
                 ></input>
                 <button onClick={handleRegistration}>Submit</button>
             </form>
