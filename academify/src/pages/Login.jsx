@@ -19,7 +19,8 @@ function Login() {
                     type='password'
                     placeholder='Password'
                 ></input>
-                <button onClick={handleRegistration}>Submit</button>
+                <div className='submit'>
+                <button onClick={handleRegistration}>Submit</button> </div>
             </form>
         </div>
     </div>
