@@ -21,3 +21,7 @@ nav {
   color: black;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
  }
+
+ a:hover{
+    transition: transform 0.5s ease-in-out;
+ }

@@ -2,18 +2,22 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import '../styles/home.css'
 
-function Home() {
+function Home () {
   return (
     <div className='home'>
       <div className='container'>
+      <Link to='/landing'>
         <div className='student'>
-          <h1>I am a student</h1>
+          <h4>I am a student</h4>
         </div>
+        </Link>
+        <Link to ='/landing'>
         <div className='teacher'>
-          <h1>I am a teacher</h1>
+          <h4>I am a teacher</h4>
         </div>
+        </Link>
       </div>
-        
+
     </div>
   )
 }

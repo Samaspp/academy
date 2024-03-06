@@ -1,65 +1,66 @@
-import React, { useState ,useEffect} from 'react'
-import {createUserWithEmailAndPassword, onAuthStateChanged, signOut} from 'firebase/auth'
+import React, { useState, useEffect } from 'react'
+import { createUserWithEmailAndPassword, onAuthStateChanged, signOut } from 'firebase/auth'
 import { auth } from '../firebase-config'
 import { Link } from 'react-router-dom'
 import '../styles/login.css'
 
-function Register() {
-    const [registerEmail, setRegisterEmail]=useState('')
-    const [registerPassword, setRegisterPassword]=useState('')
-    const [user, setUser]=useState(null)
+function Register () {
+  const [registerEmail, setRegisterEmail] = useState('')
+  const [registerPassword, setRegisterPassword] = useState('')
+  const [user, setUser] = useState(null)
 
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            setUser(currentUser);
-        });
-    
-        return () => unsubscribe();
-    }, []);
-    
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser)
+    })
 
-    const register = async (event) =>{
-        event.preventDefault()
-        try{
-        const user = await createUserWithEmailAndPassword(auth, registerEmail,registerPassword) 
-        console.log(user)
-        setRegisterEmail('')
-        setRegisterPassword('')
-        }catch(error){
-            console.log(error.message)
-        }
+    return () => unsubscribe()
+  }, [])
+
+  const register = async (event) => {
+    event.preventDefault()
+    try {
+      const user = await createUserWithEmailAndPassword(auth, registerEmail, registerPassword)
+      console.log(user)
+      setRegisterEmail('')
+      setRegisterPassword('')
+    } catch (error) {
+      console.log(error.message)
     }
+  }
 
-
-    const logout = async () => {
-            await signOut(auth)
-        }
+  const logout = async () => {
+    await signOut(auth)
+  }
   return (
-    <div className='login'>
-        
+    <div className='login-container'>
+
         <div className='container'>
             <div className='register'>
-        <h2>Register</h2>
-            <form>
+        <h2>Create an account</h2>
+            <form id="register">
+                <p>Email</p>
                 <input className='email'
                     type='text'
-                    placeholder='Email'
-                    onChange={(event) =>{setRegisterEmail(event.target.value)}}
+                    placeholder=''
+                    onChange={(event) => { setRegisterEmail(event.target.value) }}
                 ></input> <br></br>
+                <p>Password</p>
                 <input className='password'
                     type='password'
-                    placeholder='Password'
-                    onChange={(event)=>{setRegisterPassword(event.target.value)}}
+                    placeholder=''
+                    onChange={(event) => { setRegisterPassword(event.target.value) }}
                 ></input>
                 <div className='submit'>
-                <button onClick={register}>Register</button> </div>
+               <button onClick={register}>Register</button>
+            </div>
             </form>
             <h4>Already registered? Try <Link to= '/login'>logging in</Link>  </h4>
             </div>
             </div>
             <h3>User logged in: </h3>{user?.email}
             <button onClick={logout}>Signout</button>
-        
+
     </div>
   )
 }
