@@ -23,7 +23,7 @@
   .student,
   .teacher {
     border: 2px solid ; 
-    padding: 30px; 
+    padding: 20px; 
     margin: 60px; 
     transition: border-color 0.3s; 
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;

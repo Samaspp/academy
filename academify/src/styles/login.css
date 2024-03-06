@@ -1,0 +1,49 @@
+
+
+.login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh; 
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .register,
+  .login {
+    margin-bottom: 20px; 
+    display: flex;
+    flex-direction: column;
+  }
+  
+  input {
+    margin-bottom: 10px;
+    padding: 8px;
+    width: 300px; 
+  }
+  
+  .submit {
+    margin-top: 10px; /* Adjust margin as needed */
+  }
+  
+  button {
+    padding: 8px 16px; /* Adjust padding as needed */
+    background-color: #007bff; /* Adjust background color as needed */
+    color: white; /* Adjust text color as needed */
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  button:hover {
+    background-color: #0056b3; /* Adjust hover background color as needed */
+  }
+  
+  h3{
+margin:0
+  }

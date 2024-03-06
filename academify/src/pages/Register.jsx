@@ -1,12 +1,12 @@
 import React, { useState ,useEffect} from 'react'
-import { signInWithEmailAndPassword, onAuthStateChanged, signOut} from 'firebase/auth'
+import {createUserWithEmailAndPassword, onAuthStateChanged, signOut} from 'firebase/auth'
 import { auth } from '../firebase-config'
-
+import { Link } from 'react-router-dom'
 import '../styles/login.css'
 
-function Login() {
-    const [loginEmail, setLoginEmail]=useState('')
-    const [loginPassword, setLoginPassword]=useState('')
+function Register() {
+    const [registerEmail, setRegisterEmail]=useState('')
+    const [registerPassword, setRegisterPassword]=useState('')
     const [user, setUser]=useState(null)
 
     useEffect(() => {
@@ -17,18 +17,19 @@ function Login() {
         return () => unsubscribe();
     }, []);
     
-     const login = async (event) =>{
+
+    const register = async (event) =>{
         event.preventDefault()
         try{
-            const user = await signInWithEmailAndPassword(auth, loginEmail, loginPassword)
-            console.log(user)
-            setLoginEmail('')
-            setLoginPassword('')
+        const user = await createUserWithEmailAndPassword(auth, registerEmail,registerPassword) 
+        console.log(user)
+        setRegisterEmail('')
+        setRegisterPassword('')
         }catch(error){
             console.log(error.message)
         }
-
     }
+
 
     const logout = async () => {
             await signOut(auth)
@@ -37,24 +38,23 @@ function Login() {
     <div className='login'>
         
         <div className='container'>
-
-            <div className='login'>
+            <div className='register'>
+        <h2>Register</h2>
             <form>
-        <h2>Login</h2>
-           
                 <input className='email'
                     type='text'
                     placeholder='Email'
-                    onChange={(event)=>{setLoginEmail(event.target.value)}}
+                    onChange={(event) =>{setRegisterEmail(event.target.value)}}
                 ></input>
                 <input className='password'
                     type='password'
                     placeholder='Password'
-                    onChange={(event)=>{setLoginPassword(event.target.value)}}
+                    onChange={(event)=>{setRegisterPassword(event.target.value)}}
                 ></input>
                 <div className='submit'>
-                <button onClick={login}>Login</button> </div>
+                <button onClick={register}>Register</button> </div>
             </form>
+            <h4>Already registered? Try <Link to= '/login'>logging in</Link>  </h4>
             </div>
             </div>
             <h3>User logged in: </h3>{user?.email}
@@ -64,4 +64,4 @@ function Login() {
   )
 }
 
-export default Login
+export default Register
