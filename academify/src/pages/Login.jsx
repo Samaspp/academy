@@ -46,7 +46,7 @@ function Login() {
                     type='text'
                     placeholder='Email'
                     onChange={(event)=>{setLoginEmail(event.target.value)}}
-                ></input>
+                ></input><br></br>
                 <input className='password'
                     type='password'
                     placeholder='Password'
