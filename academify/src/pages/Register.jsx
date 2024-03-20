@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { createUserWithEmailAndPassword, onAuthStateChanged, signOut } from 'firebase/auth'
 import { auth } from '../firebase-config'
 import { Link } from 'react-router-dom'
+
 import '../styles/login.css'
 
 function Register () {
@@ -52,7 +53,7 @@ function Register () {
                     onChange={(event) => { setRegisterPassword(event.target.value) }}
                 ></input>
                 <div className='submit'>
-               <button onClick={register}>Register</button>
+               <button onClick={register}><Link to='/home'>Register</Link></button>
             </div>
             </form>
             <h4>Already registered? Try <Link to= '/login'>logging in</Link>  </h4>
